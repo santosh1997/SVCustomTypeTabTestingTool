@@ -1,0 +1,70 @@
+<h1>EditAdvSearch</h1>
+<script>
+    function handleSmartViewsMessage(event)
+    {
+        if(event && event.data && event.data.type === 'SmartViewsMessage' && event.data.action){
+            SmartViewsActionHandlersMap[event.data.action](event.data.payLoad);
+        }
+    }
+
+    const SmartViewsActionHandlersMap = {
+        "Action1": handleSmartViewsAction1,
+        "Action2": handleSmartViewsAction2,
+        "QueryResult": SmartViewsQuery.handleResult,
+    };
+
+    function handleSmartViewsAction1(data){
+
+    }
+    
+    function handleSmartViewsAction2(data){
+
+    }
+
+    const SmartViewsQuery = (() => {
+        const queryResults = {};
+        const getQueryId = () => {
+            var randomNum = Math.floor(Math.random() * 10000) + "";
+            while (randomNum.length < 4)
+                randomNum = "0" + randomNum;
+            return new Date().getTime() + '_' + randomNum;
+            return randomNum;
+        };
+        const postQuery = (payLoad, queryId) => {
+            window.parent.postMessage({
+                type: "SmartViewCustomTypeTabMessage",
+                action: "Query",
+                payLoad: {
+                    id: queryId,
+                    queryData: payLoad
+                }
+            });
+        };
+        return {
+            handleResult: (data) => {
+                if(data && data.id)
+                    queryResults[data.id] = data.result;
+            },
+            query: (queryData) => {
+                const queryId = getQueryId();
+                postQuery(queryData, queryId);
+                return new Promise((res) => {
+                    const queryInterval = setInterval(() => {
+                        if(queryResults && queryResults[queryId]){
+                            clearInterval(queryInterval);
+                            const result = queryResults[queryId];
+                            delete queryResults[queryId];
+                            res(result);
+                        }
+                    }, 100)
+                })
+            }
+        }
+    })();
+
+    window.addEventListener("message", handleSmartViewsMessage, false);
+
+    SmartViewsQuery.query("AdvancedSearch").then((advancedSearch) => {
+        console.log(advancedSearch);
+    });
+</script>
