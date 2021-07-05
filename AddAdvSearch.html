@@ -1,1 +1,16 @@
 <h1>AddAdvSearch</h1>
+<button>
+    Set Adv Search JSON
+</button>
+<script>
+    function setAdvSearchJSON(){
+        window.parent.postMessage({
+            type: 'SmartViewsMessage', 
+            action: 'setAdvancedSearch', 
+            payLoad: {
+                AdvancedSearchJSON: 'Some AdvancedSearchJSON',
+                AdvancedSearchText: 'Some AdvancedSearchText'
+            }
+        });
+    }
+</script>
