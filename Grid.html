@@ -4,5 +4,14 @@
         <div class="grid container" style="height: 1500px;">
             <h1>Grid will load here</h1>
         </div>
+        <script>
+            function openPopup(){
+                window.parent.postMessage({
+                    type: 'SmartViewsMessage', 
+                    action: 'openPopup', 
+                    payLoad: {}
+                }, "*");
+            }
+        </script>
     </body>
 </html>
