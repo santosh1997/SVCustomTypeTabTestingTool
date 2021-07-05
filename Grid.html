@@ -8,7 +8,7 @@
         <script>
             function openPopup(){
                 window.parent.postMessage({
-                    type: 'SmartViewsMessage', 
+                    type: 'SmartViewsGridMessage', 
                     action: 'openPopup', 
                     payLoad: {
                         'URL': 'https://santosh1997.github.io/SVCustomTypeTabTestingTool/SamplePopup.html?tabId={{tabId}}&&orgCode={{orgCode}}&&userId={{userId}}&&accessKey={{accessKey}}&&secretKey={{secretKey}}',
@@ -18,7 +18,7 @@
             }
             window.addEventListener('load', () => {
                 window.parent.postMessage({
-                    type: 'SmartViewsMessage', 
+                    type: 'SmartViewsGridMessage', 
                     action: 'setHeight', 
                     payLoad: {
                         'height': (document.scrollingElement.offsetHeight+16) + "px"

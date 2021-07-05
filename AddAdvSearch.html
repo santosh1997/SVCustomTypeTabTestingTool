@@ -6,7 +6,7 @@
 <script>
     function setAdvSearchJSON(){
         window.parent.postMessage({
-            type: 'SmartViewsMessage', 
+            type: 'SmartViewsAdvSearchMessage', 
             action: 'setAdvancedSearch', 
             payLoad: {
                 AdvancedSearchJSON: '{\"GrpConOp\":\"And\",\"Conditions\":[{\"Type\":\"Activity\",\"ConOp\":\"or\",\"RowCondition\":[{\"SubConOp\":\"And\",\"LSO\":\"ActivityEvent\",\"LSO_Type\":\"PAEvent\",\"Operator\":\"eq\",\"RSO\":\"ANY\"},{\"SubConOp\":\"And\",\"LSO_Type\":\"string\",\"LSO\":\"Activity\",\"Operator\":\"eq\",\"RSO\":\"\"},{\"SubConOp\":\"And\",\"LSO_Type\":\"DateTime\",\"LSO\":\"ActivityTime\",\"Operator\":\"eq\",\"RSO\":\"opt-all-time\"}]}],\"QueryTimeZone\":\"India Standard Time\"}',

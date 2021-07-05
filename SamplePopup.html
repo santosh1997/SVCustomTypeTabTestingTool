@@ -6,7 +6,7 @@
 <script>
     function closePopup(){
         window.parent.postMessage({
-            type: 'SmartViewsMessage', 
+            type: 'SmartViewsPopupMessage', 
             action: 'closePopup', 
             payLoad: {}
         }, "*");
