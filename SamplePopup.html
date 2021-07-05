@@ -1,5 +1,17 @@
-<h1>EditAdvSearch</h1>
+<h1>Sample Popup</h1>
+<button onclick="closePopup()">
+    Close Popup
+</button>
 <script>
+    function closePopup(){
+        window.parent.postMessage({
+            type: 'SmartViewsMessage', 
+            action: 'closePopup', 
+            payLoad: {}
+        }, "*");
+    }
+</script>
+<!-- <script>
     function handleSmartViewsMessage(event)
     {
         if(event && event.data && event.data.type === 'SmartViewsMessage' && event.data.action){
@@ -67,4 +79,4 @@
     SmartViewsQuery.query("AdvancedSearch").then((advancedSearch) => {
         console.log(advancedSearch);
     });
-</script>
+</script> -->
