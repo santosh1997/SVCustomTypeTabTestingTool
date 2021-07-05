@@ -12,6 +12,15 @@
                     payLoad: {}
                 }, "*");
             }
+            window.addEventListener('load', () => {
+                window.parent.postMessage({
+                    type: 'SmartViewsMessage', 
+                    action: 'setHeight', 
+                    payLoad: {
+                        'height': document.scrollingElement.offsetHeight + "px"
+                    }
+                }, "*");
+            });
         </script>
     </body>
 </html>
