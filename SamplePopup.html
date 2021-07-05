@@ -2,6 +2,7 @@
 <button onclick="closePopup()">
     Close Popup
 </button>
+<p id="querycontent"></p>
 <script>
     function closePopup(){
         window.parent.postMessage({
@@ -10,6 +11,11 @@
             payLoad: {}
         }, "*");
     }
+    window.addEventListener('load', () => {
+        const urlSearchParams = new URLSearchParams(window.location.search),
+            params = Object.fromEntries(urlSearchParams.entries());
+        document.getElementById('querycontent').innerText = JSON.stringify(params);
+    });
 </script>
 <!-- <script>
     function handleSmartViewsMessage(event)

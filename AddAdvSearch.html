@@ -2,6 +2,7 @@
 <button onclick="setAdvSearchJSON()">
     Set Adv Search JSON
 </button>
+<p id="querycontent"></p>
 <script>
     function setAdvSearchJSON(){
         window.parent.postMessage({
@@ -13,4 +14,9 @@
             }
         }, "*");
     }
+    window.addEventListener('load', () => {
+        const urlSearchParams = new URLSearchParams(window.location.search),
+            params = Object.fromEntries(urlSearchParams.entries());
+        document.getElementById('querycontent').innerText = JSON.stringify(params);
+    });
 </script>
