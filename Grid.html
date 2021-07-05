@@ -21,7 +21,7 @@
                     type: 'SmartViewsMessage', 
                     action: 'setHeight', 
                     payLoad: {
-                        'height': document.scrollingElement.offsetHeight + "px"
+                        'height': (document.scrollingElement.offsetHeight+16) + "px"
                     }
                 }, "*");
                 const urlSearchParams = new URLSearchParams(window.location.search),
