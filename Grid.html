@@ -16,6 +16,7 @@
             <button onclick="setRecordCount(10)">
                 Set Record Count 10
             </button>
+            <p id="refreshtime"></p>
         </div>
         <script>
             function openPopup(){
@@ -63,7 +64,7 @@
             }
 
             function performRefresh(){
-                alert('Refresh happpening');
+                document.getElementById('refreshtime').innerText = ("Refreshed at" + new Date().toJSON());
             }
         </script>
     </body>
