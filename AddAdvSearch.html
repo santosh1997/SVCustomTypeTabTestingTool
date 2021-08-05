@@ -1,22 +1,11 @@
 <h1>AddAdvSearch</h1>
-<button onclick="setAdvSearchJSON()">
-    Set Adv Search JSON
-</button>
-<p id="querycontent"></p>
 <script>
-    function setAdvSearchJSON(){
-        window.parent.postMessage({
-            type: 'SmartViewsAdvSearchMessage', 
-            action: 'setAdvancedSearch', 
-            payLoad: {
-                AdvancedSearchJSON: '{\"GrpConOp\":\"And\",\"Conditions\":[{\"Type\":\"Activity\",\"ConOp\":\"or\",\"RowCondition\":[{\"SubConOp\":\"And\",\"LSO\":\"ActivityEvent\",\"LSO_Type\":\"PAEvent\",\"Operator\":\"eq\",\"RSO\":\"ANY\"},{\"SubConOp\":\"And\",\"LSO_Type\":\"string\",\"LSO\":\"Activity\",\"Operator\":\"eq\",\"RSO\":\"\"},{\"SubConOp\":\"And\",\"LSO_Type\":\"DateTime\",\"LSO\":\"ActivityTime\",\"Operator\":\"eq\",\"RSO\":\"opt-all-time\"}]}],\"QueryTimeZone\":\"India Standard Time\"}',
-                AdvancedSearchText: '{\"ConditionOperator\":\"or\",\"Conditions\":[\"<span class = \\\"query-readable-row\\\"><span class = \\\"condition\\\">Activity</span>  of the Student <span class = \\\"operator\\\">is</span> <span class = \\\"option\\\">any activity</span> </span>\"]}'
-            }
-        }, "*");
+window.parent.postMessage({
+    type: 'SmartViewsAdvSearchMessage', 
+    action: 'setAdvancedSearch', 
+    payLoad: {
+        AdvancedSearchJSON: '{}',
+        AdvancedSearchText: 'Telephony and SMS'
     }
-    window.addEventListener('load', () => {
-        const urlSearchParams = new URLSearchParams(window.location.search),
-            params = Object.fromEntries(urlSearchParams.entries());
-        document.getElementById('querycontent').innerText = JSON.stringify(params);
-    });
+}, "*");
 </script>
